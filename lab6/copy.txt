@@ -1,0 +1,8 @@
+students:
+Alina
+Alnur
+Karina
+Ruslan
+Vlad
+Vlad
+Vlad
