@@ -162,13 +162,13 @@ class Game:
 
     def main_menu(self):
         screen.fill(WHITE)
-        ui.draw_text(screen, "Racer", 40, SCREEN_WIDTH//2, 100, RED, True)
+        ui.text(screen, "Racer", 40, SCREEN_WIDTH//2, 100, RED, True)
         
         btn_play = ui.Button("PLAY", 125, 200, 150, 50, GREEN)
         btn_lead = ui.Button("SCORES", 125, 270, 150, 50, GRAY)
         btn_quit = ui.Button("QUIT", 125, 340, 150, 50, BLACK)
         
-        ui.draw_text(screen, f"Name: {self.username}", 20, SCREEN_WIDTH//2, 180, BLACK, True)
+        ui.text(screen, f"Name: {self.username}", 20, SCREEN_WIDTH//2, 180, BLACK, True)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -266,22 +266,22 @@ class Game:
         for entity in self.all_sprites:
             screen.blit(entity.image, entity.rect)
  
-        ui.draw_text(screen, f"SCORE: {SCORE}", 20, 10, 10, BLACK)
-        ui.draw_text(screen, f"COINS: {self.coins_count}", 18, 10, 40, (180, 150, 0))
-        ui.draw_text(screen, f"SPEED: {int(self.game_speed)}", 18, 10, 70, BLACK)
+        ui.text(screen, f"SCORE: {SCORE}", 20, 10, 10, BLACK)
+        ui.text(screen, f"COINS: {self.coins_count}", 18, 10, 40, (180, 150, 0))
+        ui.text(screen, f"SPEED: {int(self.game_speed)}", 18, 10, 70, BLACK)
         
         if self.player.shielded:
-            ui.draw_text(screen, "SHIELD ACTIVE!", 18, SCREEN_WIDTH//2, 20, (0, 255, 255), True)
+            ui.text(screen, "SHIELD ACTIVE!", 18, SCREEN_WIDTH//2, 20, (0, 255, 255), True)
         
         pygame.display.update()
         clock.tick(FPS)
 
     def game_over_screen(self):
         screen.fill(RED)
-        ui.draw_text(screen, "CRASHED!", 40, SCREEN_WIDTH//2, 150, WHITE, True)
-        ui.draw_text(screen, f"Final Score: {SCORE}", 25, SCREEN_WIDTH//2, 220, WHITE, True)
-        ui.draw_text(screen, f"Coins Collected: {self.coins_count}", 20, SCREEN_WIDTH//2, 260, WHITE, True)
-        ui.draw_text(screen, f"Distance: {int(self.distance)}m", 20, SCREEN_WIDTH//2, 300, WHITE, True)
+        ui.text(screen, "CRASHED!", 40, SCREEN_WIDTH//2, 150, WHITE, True)
+        ui.text(screen, f"Final Score: {SCORE}", 25, SCREEN_WIDTH//2, 220, WHITE, True)
+        ui.text(screen, f"Coins Collected: {self.coins_count}", 20, SCREEN_WIDTH//2, 260, WHITE, True)
+        ui.text(screen, f"Distance: {int(self.distance)}m", 20, SCREEN_WIDTH//2, 300, WHITE, True)
         
         btn_retry = ui.Button("RETRY", 125, 350, 150, 50, BLACK)
         btn_menu = ui.Button("MENU", 125, 420, 150, 50, GRAY)
@@ -309,24 +309,24 @@ class Game:
 
     def show_leaderboard(self):
         screen.fill(WHITE)
-        ui.draw_text(screen, "TOP SCORES", 30, SCREEN_WIDTH//2, 50, BLACK, True)
+        ui.text(screen, "TOP SCORES", 30, SCREEN_WIDTH//2, 50, BLACK, True)
         
         scores = p.get_leaderboard()
         
         if not scores:
-            ui.draw_text(screen, "No scores yet!", 20, SCREEN_WIDTH//2, 150, GRAY, True)
+            ui.text(screen, "No scores yet!", 20, SCREEN_WIDTH//2, 150, GRAY, True)
         else:
-            ui.draw_text(screen, "Rank", 18, 50, 100, BLACK)
-            ui.draw_text(screen, "Name", 18, 150, 100, BLACK)
-            ui.draw_text(screen, "Score", 18, 250, 100, BLACK)
-            ui.draw_text(screen, "Distance", 18, 330, 100, BLACK)
+            ui.text(screen, "Rank", 18, 50, 100, BLACK)
+            ui.text(screen, "Name", 18, 150, 100, BLACK)
+            ui.text(screen, "Score", 18, 250, 100, BLACK)
+            ui.text(screen, "Distance", 18, 330, 100, BLACK)
             
             for i, entry in enumerate(scores[:10]): 
                 y_pos = 150 + i * 35
-                ui.draw_text(screen, f"{i+1}", 18, 50, y_pos, BLACK)
-                ui.draw_text(screen, entry["name"][:10], 18, 150, y_pos, BLACK)
-                ui.draw_text(screen, str(entry["score"]), 18, 250, y_pos, BLACK)
-                ui.draw_text(screen, str(entry.get("distance", 0)), 18, 330, y_pos, BLACK)
+                ui.text(screen, f"{i+1}", 18, 50, y_pos, BLACK)
+                ui.text(screen, entry["name"][:10], 18, 150, y_pos, BLACK)
+                ui.text(screen, str(entry["score"]), 18, 250, y_pos, BLACK)
+                ui.text(screen, str(entry.get("distance", 0)), 18, 330, y_pos, BLACK)
         
         btn_back = ui.Button("BACK", 125, 500, 150, 50, BLACK)
         
