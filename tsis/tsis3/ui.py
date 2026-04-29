@@ -36,7 +36,7 @@ class Button:
     def is_clicked(self, pos):
         return self.rect.collidepoint(pos)
 
-def draw_text(screen, text, size, x, y, color=BLACK, center=False):
+def text(screen, text, size, x, y, color=BLACK, center=False):
     font = pygame.font.SysFont("Verdana", size)
     text_surface = font.render(text, True, color)
     text_rect = text_surface.get_rect()
